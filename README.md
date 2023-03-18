@@ -11,11 +11,14 @@ gpt-cli is a Rust program that provides a chatbot using OpenAI's GPT-3.5-turbo m
 
 1. Clone or download this repository.
 2. Navigate to the project directory in your terminal.
-3. Run the program with the following command:
-
-```
-cargo run [OPTIONS] [MESSAGE]
-```
+3. Execute the following command to build the program:
+   ```
+   cargo build
+   ```
+4. After the build is complete, execute the following command to run the program:
+   ```
+   cargo run [OPTIONS] [MESSAGE]
+   ```
 
 ### Options:
 
