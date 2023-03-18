@@ -30,7 +30,7 @@ cargo run [OPTIONS] [MESSAGE]
 cargo run -t 60 -m "Hello, gpt-cli!"
 ```
 
-This command sets the timeout to 60 seconds and sends the message "Hello, GPT-3.5-turbo!" to the chatbot.
+This command sets the timeout to 60 seconds and sends the message "Hello, gpt-cli!" to the chatbot.
 
 ## Notes
 
