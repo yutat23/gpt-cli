@@ -5,31 +5,7 @@ use reqwest::{blocking::Client, header};
 use serde_json::{json, Value};
 
 fn main() -> Result<(), Box<dyn Error>> {
-    let args: Vec<String> = env::args().collect();
-
-    let mut message = String::new();
-    let mut timeout = 30u64;
-    let mut i = 1;
-    while i < args.len() {
-        match args[i].as_str() {
-            "-h" | "--help" => {
-                print_usage();
-                std::process::exit(0);
-            }
-            "-t" | "--timeout" => {
-                timeout = args[i + 1].parse::<u64>().unwrap_or(30);
-                i += 2;
-            }
-            "-m" | "--message" => {
-                message = args[i + 1].clone();
-                i += 2;
-            }
-            _ => {
-                message = args[i].clone();
-                i += 1;
-            }
-        }
-    }
+    let (message, timeout) = parse_args();
 
     println!("You: {:?}", message);
     let api_key = match env::var("OPENAI_API_KEY") {
@@ -69,6 +45,36 @@ fn main() -> Result<(), Box<dyn Error>> {
     println!("{}", content);
 
     Ok(())
+}
+
+fn parse_args() -> (String, u64) {
+    let args: Vec<String> = env::args().collect();
+
+    let mut message = String::new();
+    let mut timeout = 30u64;
+    let mut i = 1;
+    while i < args.len() {
+        match args[i].as_str() {
+            "-h" | "--help" => {
+                print_usage();
+                std::process::exit(0);
+            }
+            "-t" | "--timeout" => {
+                timeout = args[i + 1].parse::<u64>().unwrap_or(30);
+                i += 2;
+            }
+            "-m" | "--message" => {
+                message = args[i + 1].clone();
+                i += 2;
+            }
+            _ => {
+                message = args[i].clone();
+                i += 1;
+            }
+        }
+    }
+
+    (message, timeout)
 }
 
 fn print_usage() {
