@@ -20,6 +20,8 @@ gpt-cli is a Rust program that provides a chatbot using OpenAI's GPT-3.5-turbo m
    cargo run [OPTIONS] [MESSAGE]
    ```
 
+If `~/.local/bin` is set as a path in your environment variables, you can skip steps 3 and 4 by running `./make.sh`.
+
 ### Options:
 
 - `-h`, `--help`: Show the help message and exit.
